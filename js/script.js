@@ -22,24 +22,26 @@ let bomb = rdnNumbers(1,100,15)
 
 console.log(bomb)
 
+let message = document.getElementById("message")
+
 btn.addEventListener("click", function(){
     grid.innerHTML = "";
     for (let i = 1; i <= 100; i++){
-        numbers = i
         
-    
         // creo uno square per ogni numero
-        let square = createSquare(numbers);
+        let square = createSquare(i);
         
-    
         // aggiungo un eventlistener
         square.addEventListener("click", function squareClick(){
-            if (square.includes(bomb)){
-                this.classList.add("red")
+            if (bomb.includes(i)){
+                this.classList.add("red")  
                 console.log(this.textContent)
-            } else {
+                message.innerHTML = "hai perso"
+               
+            } else{
                 this.classList.add("blue")
                 console.log(this.textContent)
+                message.innerHTML = "stai andando bene"
             }
         });
        
@@ -50,8 +52,6 @@ btn.addEventListener("click", function(){
 
 
 // funtions
-
-// creare un nuovo div aggiungendo la classe square in base al numeroi
 
 
 function createSquare(numbers){
@@ -71,3 +71,4 @@ function rdnNumbers(min, max, times) {
     }
     return randoms
 }
+

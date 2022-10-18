@@ -12,14 +12,15 @@
 
 
 const grid = document.querySelector(".grid")
-let bombArrey = [16]
-console.log(bombArrey)
-
-
 
 let btn = document.getElementById("btn")
-console.log(btn)
+console.log(btn);
 
+let square = []
+
+let bomb = rdnNumbers(1,100,15)
+
+console.log(bomb)
 
 btn.addEventListener("click", function(){
     grid.innerHTML = "";
@@ -29,24 +30,23 @@ btn.addEventListener("click", function(){
     
         // creo uno square per ogni numero
         let square = createSquare(numbers);
-    
+        
     
         // aggiungo un eventlistener
         square.addEventListener("click", function squareClick(){
-            this.classList.add("blue")
-            console.log(this.textContent)
+            if (square.includes(bomb)){
+                this.classList.add("red")
+                console.log(this.textContent)
+            } else {
+                this.classList.add("blue")
+                console.log(this.textContent)
+            }
         });
        
         // metto il risultato nell html
         grid.append(square)
     }
 })
-
-// aggiungo eventlistener 
-
-
-
-// verificare l'arrasy
 
 
 // funtions
@@ -62,18 +62,12 @@ function createSquare(numbers){
 }
   
 
-// numeri casuali 
 
-function rdnNumber(min, max) { 
-    for (i = 0; i < bombArrey; i++) {
-         random = Math.round(Math.random()*100 + 1);
-    return random;
+
+function rdnNumbers(min, max, times) {
+    const randoms = [];
+    for(let i = 0; i < times; i++ ){
+        randoms.push(Math.floor(Math.random() * (max - min) + min))
+    }
+    return randoms
 }
-}
-console.log(rdnNumber);
-// fare arrey bomba d i16 numeri
-// guardo se il pulsante clickkato e una bomba se lo e lutente aha perso
-// scorrere le celle e colorare d irosso le bombe usare if else
-// lutente vince quando restano 16 numeri che l'utente noin ha cliccato
-// l'utente operde quan oclicc una bomba
-// sommare tutti i tentativi fatti 

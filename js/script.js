@@ -12,6 +12,9 @@
 
 
 const grid = document.querySelector(".grid")
+let bombArrey = [16]
+console.log(bombArrey)
+
 
 
 let btn = document.getElementById("btn")
@@ -59,14 +62,18 @@ function createSquare(numbers){
 }
   
 
-// aggiungere un div quando viene cliccato uno square
+// numeri casuali 
 
-
-
+function rdnNumber(min, max) { 
+    for (i = 0; i < bombArrey; i++) {
+         random = Math.round(Math.random()*100 + 1);
+    return random;
+}
+}
+console.log(rdnNumber);
 // fare arrey bomba d i16 numeri
 // guardo se il pulsante clickkato e una bomba se lo e lutente aha perso
 // scorrere le celle e colorare d irosso le bombe usare if else
 // lutente vince quando restano 16 numeri che l'utente noin ha cliccato
-// l'utente operde quan oclicc una bomba\
+// l'utente operde quan oclicc una bomba
 // sommare tutti i tentativi fatti 
-
